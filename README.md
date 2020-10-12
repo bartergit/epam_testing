@@ -1,2 +1,2 @@
 # epam_testing
-Repo for Epam testing course. Welcome :3
+Repo for Epam testing course. Welcome :3 <3
