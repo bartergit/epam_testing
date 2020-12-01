@@ -13,7 +13,7 @@ public class WebDriverTest {
     @Test
     public void testRegisterWithNoData(){
         final WebDriver driver = new ChromeDriver();
-        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\firefox-driver\\chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\firefox-driver\\chromedriver.exe");
 //        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.get("https://24shop.by/");
         WebElement registerLink = new WebDriverWait(driver, 3)
