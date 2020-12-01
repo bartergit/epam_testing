@@ -9,6 +9,7 @@ import entity.plane.Plane;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 public class Airport {
     private List<? extends Plane> planes;
 
@@ -39,9 +40,9 @@ public class Airport {
     }
 
     public List<MilitaryPlane> getTransportMilitaryPlanes() {
-    return getMilitaryPlanes().stream()
-            .filter(militaryPlane -> militaryPlane.getType().equals(MilitaryType.TRANSPORT))
-            .collect(Collectors.toCollection(ArrayList::new));
+        return getMilitaryPlanes().stream()
+                .filter(militaryPlane -> militaryPlane.getType().equals(MilitaryType.TRANSPORT))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public List<MilitaryPlane> getBomberMilitaryPlanes() {
@@ -74,7 +75,7 @@ public class Airport {
 
 
     private void print(Collection<? extends Plane> collection) {
-       for(Plane plane : planes){
+        for (Plane plane : planes) {
             System.out.println(plane);
         }
     }

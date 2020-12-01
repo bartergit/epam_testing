@@ -2,7 +2,7 @@ package entity.plane;
 
 import java.util.Objects;
 
-public class PassengerPlane extends Plane{
+public class PassengerPlane extends Plane {
     private int passengersCapacity;
 
     public PassengerPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, int passengersCapacity) {
@@ -18,7 +18,7 @@ public class PassengerPlane extends Plane{
     public String toString() {
         return super.toString().replace("}",
                 ", passengersCapacity=" + passengersCapacity +
-                '}');
+                        '}');
     }
 
     @Override
@@ -26,7 +26,7 @@ public class PassengerPlane extends Plane{
         if (this == o) {
             return true;
         }
-        if (!(o instanceof PassengerPlane)){
+        if (!(o instanceof PassengerPlane)) {
             return false;
         }
         if (!super.equals(o)) {

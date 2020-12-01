@@ -5,7 +5,7 @@ import entity.model.ExperimentalType;
 
 import java.util.Objects;
 
-public class ExperimentalPlane extends Plane{
+public class ExperimentalPlane extends Plane {
     private ExperimentalType type;
     private ClassificationLevel classificationLevel;
 
@@ -15,8 +15,12 @@ public class ExperimentalPlane extends Plane{
         this.classificationLevel = classificationLevel;
     }
 
-    public ClassificationLevel getClassificationLevel(){
+    public ClassificationLevel getClassificationLevel() {
         return classificationLevel;
+    }
+
+    public ExperimentalType getType() {
+        return type;
     }
 
     @Override
@@ -35,7 +39,7 @@ public class ExperimentalPlane extends Plane{
         if (!(o instanceof ExperimentalPlane)) {
             return false;
         }
-        if(!super.equals(o)){
+        if (!super.equals(o)) {
             return false;
         }
         ExperimentalPlane plane = (ExperimentalPlane) o;
