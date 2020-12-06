@@ -42,6 +42,7 @@ public class PlaneTest {
 
     @Test
     public void testEqualsSelf() {
+        System.out.print("Я красивый ezezez");
         Assert.assertEquals(passengerPlanes.get(0), passengerPlanes.get(0));
     }
 
