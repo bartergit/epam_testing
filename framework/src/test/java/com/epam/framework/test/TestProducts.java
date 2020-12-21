@@ -3,26 +3,35 @@ package com.epam.framework.test;
 import com.epam.framework.page.ProductsPage;
 import com.epam.framework.service.ProductHandler;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TestProducts extends CommonConditions {
-    @Test
-    public void testSortByPriceInc() {
+    @DataProvider
+    public Object[] categories() {
+        return new String[]{
+                "FM-модуляторы",
+                "Пылесосы",
+                "Автосигнализации"
+        };
+    }
+    @Test (dataProvider = "categories")
+    public void testSortByPriceInc(String category) {
         Assert.assertTrue(ProductHandler
                 .isSortedByPriceInc(new ProductsPage(driver)
-                        .openPage()
+                        .openPage(category)
                         .getProductsSortByPriceInc()));
     }
 
-    @Test
-    public void testSortByPriceDec() {
+    @Test (dataProvider = "categories")
+    public void testSortByPriceDec(String category) {
         Assert.assertTrue(ProductHandler
                 .isSortedByPriceDec(new ProductsPage(driver)
-                        .openPage()
+                        .openPage(category)
                         .getProductsSortByPriceDec()));
     }
 
-    @Test void testSortByCategories(){
+    void testSortByCategories(String category){
         Assert.assertTrue(ProductHandler.containsProductWithName(new ProductsPage(driver)
                 .openPage()
                 .sortByCategory("Samsung"), "samsung"));

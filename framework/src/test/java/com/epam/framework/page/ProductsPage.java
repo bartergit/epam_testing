@@ -15,7 +15,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ProductsPage extends AbstractPage {
-    public final String BASE_URL = "https://24shop.by/catalog/pylesosy/";
+    public final String BASE_URL = "https://24shop.by/catalog/";
+    public final String BASE_CATEGORY = "пылесосы";
 
     private By selectSelector = By.id("select-sort");
     private By loadLabelSelector = By.cssSelector(".vue-loader");
@@ -36,15 +37,28 @@ public class ProductsPage extends AbstractPage {
     @FindBy(css = ".form-item input")
     private List<WebElement> checkboxes;
 
+    @FindBy(css = ".link_decor")
+    private List<WebElement> links;
+
     public ProductsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
 
     @Override
-    public ProductsPage openPage() {
+    public ProductsPage openPage(){
+        return openPage(BASE_CATEGORY);
+    }
+
+    public ProductsPage openPage(String sectionName) {
         driver.navigate().to(BASE_URL);
-        return this;
+        for (WebElement link : links){
+            if (link.getText().toLowerCase().equals(sectionName.toLowerCase())){
+                link.click();
+                return this;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Product> getProducts(){
