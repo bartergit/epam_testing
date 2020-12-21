@@ -68,6 +68,8 @@ public class PlaneTest {
 
     @Test
     public void testMilitaryToString(){
+        System.setProperty("console.encoding","Cp866");
+        System.out.println("фвфвфвфвфвфв");
         Assert.assertNotEquals(militaryPlanes.get(0).toString().indexOf("type"), -1);
     }
 

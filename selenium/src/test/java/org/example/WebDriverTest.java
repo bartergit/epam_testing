@@ -1,39 +1,53 @@
 package org.example;
-import org.openqa.selenium.*;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.Integer.parseInt;
+
+
 public class WebDriverTest {
-    @Test
-    public void testRegisterWithNoDataWithoutClass(){
-        final WebDriver driver = new ChromeDriver();
-//        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\firefox-driver\\chromedriver.exe");
-//        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.get("https://24shop.by/");
-        WebElement registerLink = new WebDriverWait(driver, 3)
-                .until(d -> d.findElement(By.cssSelector(".top-nav-menu--auth div:first-child a")));
-        registerLink.click();
-        String currentTitle = driver.getTitle();
-        WebElement registerButton = new WebDriverWait(driver, 3)
-                .until(v -> v.findElement(By.id("button01")));
-        registerButton.click();
-        Assert.assertThrows(TimeoutException.class,()-> new WebDriverWait(driver, 3)
-                .until(v -> v.findElement(By.id("04"))));
+    public static final String LINK = "https://superlama.by/kulon-harry-potter";
+    private WebDriver driver;
+
+    @BeforeMethod
+    public void setup(){
+        driver = new ChromeDriver();
+        driver.get("https://superlama.by/");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        driver.quit();
     }
 
     @Test
-    public void testRegisterWithNoData() throws Exception{
-        MainPage mainPage = new MainPage(new ChromeDriver());
-        RegistrationPage registrationPage = mainPage.clickOnRegisterLink();
-        Assert.assertThrows(NoSuchElementException.class, ()-> registrationPage.Register("", "", ""));
+    public void testAddedLikedItems() {
+
+        driver.get(LINK);
+        WebElement likeButton = new WebDriverWait(driver,10)
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@value='В корзину']")));
+        likeButton.click();
+
+        List<WebElement> likedItems = driver.findElements(By.xpath("//a[@href='https://superlama.by/kulon-harry-potter']"));
+        WebElement numberOfItems = driver.findElement(By.xpath("//span[@class='cart-total']"));
+
+        Assert.assertTrue(parseInt(numberOfItems.getText()) == likedItems.size());
+
     }
 
-    @Test
-    public void testRegisterWithData() throws Exception{
-        MainPage mainPage = new MainPage(new ChromeDriver());
-        RegistrationPage registrationPage = mainPage.clickOnRegisterLink();
-        registrationPage.Register("445474940", "Ivan", "sale@24.shop");
-    }
+
+
 }

@@ -11,8 +11,10 @@ import entity.plane.PassengerPlane;
 import entity.plane.Plane;
 
 import java.util.Arrays;
+
 import static java.util.Comparator.comparing;
 import static java.util.Comparator.reverseOrder;
+
 import java.util.List;
 
 public class AirportTest {
@@ -20,7 +22,7 @@ public class AirportTest {
     private Airport airport;
 
     @BeforeTest
-    private void setUp(){
+    private void setUp() {
         planes = Arrays.asList(
                 new PassengerPlane("Boeing-737", 900, 12000, 60500, 164),
                 new PassengerPlane("Boeing-737-800", 940, 12300, 63870, 192),
@@ -45,7 +47,7 @@ public class AirportTest {
     @Test
     public void testHasAtLeastOneTransportInMilitaryPlanes() {
         Assert.assertTrue(airport.getTransportMilitaryPlanes().stream()
-        .anyMatch(militaryPlane -> militaryPlane.getType() == MilitaryType.TRANSPORT));
+                .anyMatch(militaryPlane -> militaryPlane.getType() == MilitaryType.TRANSPORT));
     }
 
     @Test

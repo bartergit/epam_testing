@@ -4,7 +4,7 @@ import entity.model.MilitaryType;
 
 import java.util.Objects;
 
-public class MilitaryPlane extends Plane{
+public class MilitaryPlane extends Plane {
     private MilitaryType type;
 
     public MilitaryPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, MilitaryType type) {
@@ -20,7 +20,7 @@ public class MilitaryPlane extends Plane{
     public String toString() {
         return super.toString().replace("}",
                 ", type=" + type +
-                '}');
+                        '}');
     }
 
     @Override
@@ -28,10 +28,10 @@ public class MilitaryPlane extends Plane{
         if (this == o) {
             return true;
         }
-        if (!(o instanceof MilitaryPlane)){
+        if (!(o instanceof MilitaryPlane)) {
             return false;
         }
-        if (!super.equals(o)){
+        if (!super.equals(o)) {
             return false;
         }
         MilitaryPlane that = (MilitaryPlane) o;
