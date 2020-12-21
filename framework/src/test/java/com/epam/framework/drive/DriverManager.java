@@ -9,7 +9,6 @@ public class DriverManager {
 
     public static WebDriver getDriver(){
         if (driver == null) {
-            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
         return driver;

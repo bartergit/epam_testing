@@ -9,11 +9,14 @@ import com.epam.framework.service.ReadEnvSpecificData;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.rmi.server.ExportException;
 import java.util.ResourceBundle;
 
+
+@Listeners({TestListener.class})
 public class TestLogin extends CommonConditions{
     @DataProvider
     public Object[] users() {

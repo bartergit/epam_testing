@@ -4,8 +4,11 @@ import com.epam.framework.page.ProductsPage;
 import com.epam.framework.service.ProductHandler;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+
+@Listeners({TestListener.class})
 public class TestProducts extends CommonConditions {
     @DataProvider
     public Object[] categories() {

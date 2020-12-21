@@ -4,11 +4,14 @@ import com.epam.framework.model.FeedbackMessage;
 import com.epam.framework.page.FeedbackPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
 
+
+@Listeners({TestListener.class})
 public class TestFeedback extends CommonConditions {
     @DataProvider
     public Object[] feedBackData() {
