@@ -7,9 +7,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-
 
 @Listeners({TestListener.class})
 public class TestFeedback extends CommonConditions {

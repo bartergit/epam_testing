@@ -34,6 +34,7 @@ public class TestProducts extends CommonConditions {
                         .getProductsSortByPriceDec()));
     }
 
+    @Test
     void testSortByCategories(String category){
         Assert.assertTrue(ProductHandler.containsProductWithName(new ProductsPage(driver)
                 .openPage()
