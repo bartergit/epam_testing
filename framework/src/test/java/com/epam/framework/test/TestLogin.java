@@ -6,18 +6,30 @@ import com.epam.framework.page.ProductsPage;
 import com.epam.framework.page.SearchPage;
 import com.epam.framework.service.ProductHandler;
 import com.epam.framework.service.ReadEnvSpecificData;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.rmi.server.ExportException;
 import java.util.ResourceBundle;
 
 public class TestLogin extends CommonConditions{
-
+    @DataProvider
+    public Object[] users() {
+        return new Object[]{
+                new User("445444952", "pass"),
+                new User("445555551", "pass2")
+        };
+    }
     @Test
-    public void loginUserTest() {
+    public void loginUserTestNative() {
         User user = new User(ReadEnvSpecificData.getTestData("test_data.user.mobile"), ReadEnvSpecificData.getTestData("test_data.user.password"));
-        Assert.assertEquals(user.getMobile(), "445474951");
-        Assert.assertEquals(user.getPassword(), "password");
+        Assert.assertTrue(new LoginPage(driver).openPage().loginUser(user).isUserLoggedIn());
+    }
+
+    @Test(expectedExceptions = AssertionError.class, dataProvider = "users")
+    public void loginUserTestFails(User user) {
         Assert.assertTrue(new LoginPage(driver).openPage().loginUser(user).isUserLoggedIn());
     }
 }
