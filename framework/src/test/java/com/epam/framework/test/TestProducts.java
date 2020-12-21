@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 public class TestProducts extends CommonConditions {
     @DataProvider
     public Object[] categories() {
-        return new String[]{
+        return new Object[]{
                 "FM-модуляторы",
                 "Пылесосы",
                 "Автосигнализации"
@@ -35,7 +35,7 @@ public class TestProducts extends CommonConditions {
     }
 
     @Test
-    void testSortByCategories(String category){
+    void testSortByCategories(){
         Assert.assertTrue(ProductHandler.containsProductWithName(new ProductsPage(driver)
                 .openPage()
                 .sortByCategory("Samsung"), "samsung"));

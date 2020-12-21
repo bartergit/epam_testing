@@ -18,7 +18,7 @@ public class CommonConditions {
     public void setUp()
     {
         driver = DriverManager.getDriver();
-        log.error("Driver is set up");
+        log.debug("Driver is set up");
     }
 
     @AfterMethod(alwaysRun = true)
