@@ -18,7 +18,7 @@ public class ProductHandler {
     }
 
     public static ArrayList<Product> createProductList(String[] names, String[] stringedPrices) {
-        var outArray = new ArrayList<Product>();
+        ArrayList outArray = new ArrayList<Product>();
         for (int i = 0; i < names.length; i++) {
             outArray.add(new Product(names[i], parseStringedPrice(stringedPrices[i])));
         }
@@ -26,14 +26,14 @@ public class ProductHandler {
     }
 
     public static boolean isSortedByPriceInc(ArrayList<Product> originalList) {
-        var productList = new ArrayList<>(originalList);
-        productList.sort((x,y) -> Float.compare(x.getPrice(), y.getPrice()));
+        ArrayList productList = new ArrayList<>(originalList);
+        productList.sort(Comparator.comparingDouble(Product::getPrice));
         return productList.equals(originalList);
     }
 
     public static boolean isSortedByPriceDec(ArrayList<Product> originalList) {
-        var productList = new ArrayList<>(originalList);
-        productList.sort((x,y) -> Float.compare(x.getPrice(), y.getPrice()));
+        ArrayList productList = new ArrayList<>(originalList);
+        productList.sort(Comparator.comparingDouble(Product::getPrice));
         Collections.reverse(productList);
         return productList.equals(originalList);
     }

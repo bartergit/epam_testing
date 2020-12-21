@@ -15,7 +15,7 @@ public class TestLogin extends CommonConditions{
 
     @Test
     public void loginUserTest() {
-        var user = new User(ReadEnvSpecificData.getTestData("test_data.user.mobile"), ReadEnvSpecificData.getTestData("test_data.user.password"));
+        User user = new User(ReadEnvSpecificData.getTestData("test_data.user.mobile"), ReadEnvSpecificData.getTestData("test_data.user.password"));
         Assert.assertEquals(user.getMobile(), "445474951");
         Assert.assertEquals(user.getPassword(), "password");
         Assert.assertTrue(new LoginPage(driver).openPage().loginUser(user).isUserLoggedIn());

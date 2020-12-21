@@ -18,7 +18,7 @@ public class TestSearch extends CommonConditions {
 
     @Test(dataProvider = "differentRegister")
     public void searchTestWithDifferentRegister(String toTest, String expected) {
-        var page = new SearchPage(driver).openPage().search(toTest);
+        SearchPage page = new SearchPage(driver).openPage().search(toTest);
         Assert.assertTrue(page.isSomethingFound());
         Assert.assertTrue(ProductHandler.containsProductWithName(page.getProducts(), expected));
     }
@@ -32,7 +32,7 @@ public class TestSearch extends CommonConditions {
     }
     @Test(dataProvider = "unusual")
     public void searchTestWithUnusualNames(String toTest, String expected) {
-        var page = new SearchPage(driver).openPage().search("laptop");
+        SearchPage page = new SearchPage(driver).openPage().search("laptop");
         Assert.assertTrue(page.isSomethingFound());
         Assert.assertTrue(ProductHandler.containsProductWithName(page.getProducts(), "ноутбук"));
     }
